@@ -1,0 +1,50 @@
+<lifecycles>
+  <lifecycle>
+    <id>retrotranslator</id>
+    <phases>
+      <phase>
+        <id>process-classes</id>
+        <executions>
+          <execution>
+            <goals>
+              <goal>translate</goal>
+            </goals>
+          </execution>
+        </executions>
+      </phase>
+      <phase>
+        <id>package</id>
+        <executions>
+          <execution>
+            <goals>
+              <goal>org.apache.maven.plugins:maven-jar-plugin:jar</goal>
+            </goals>
+            <configuration>
+              <classesDirectory>${project.build.directory}/classes-retro</classesDirectory>
+              <classifier>retro</classifier>
+            </configuration>
+          </execution>
+        </executions>
+      </phase>
+      <phase>
+        <id>test</id>
+        <executions>
+          <execution>
+            <goals>
+              <goal>org.apache.maven.plugins:maven-surefire-plugin:test</goal>
+            </goals>
+            <configuration>
+              <classesDirectory>${project.build.directory}/classes-retro</classesDirectory>
+              <forkMode>once</forkMode>
+              <jvm>${retrotranslator.test.jvm}</jvm>
+              <skip>${retrotranslator.test.skip}</skip>
+              <reportsDirectory>${project.build.directory}/surefire-reports-retro</reportsDirectory>
+            </configuration>
+          </execution>
+        </executions>
+      </phase>
+    </phases>
+  </lifecycle>
+</lifecycles>
+
+

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- $Id$ -->
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+    
+    <parent>
+        <artifactId>mojo</artifactId>
+        <groupId>org.codehaus.mojo</groupId>
+        <version>12</version>
+        <relativePath>../pom.xml</relativePath>
+    </parent>
+
+    <artifactId>retrotranslator-maven-plugin</artifactId>
+    <name>Retrotranslator Plugin for Maven 2</name>
+    <packaging>maven-plugin</packaging>
+
+    <version>1.0-SNAPSHOT</version>
+
+    <url>http://mojo.codehaus.org/retrotranslator-maven-plugin</url>
+    <inceptionYear>2005</inceptionYear>
+    
+    <description>
+        Translates Java 5 classes to be compatible with J2SE 1.4 using Retrotranslator.
+    </description>
+
+    <licenses>
+        <license>
+            <name>Apache License 2</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <id>jstrachan</id>
+            <name>James Strachan</name>
+            <email>james.strachan@gmail.com</email>
+        </developer>
+
+        <developer>
+            <id>chirino</id>
+            <name>Hiram Chirino</name>
+            <email>hiram@hiramchirino.com</email>
+        </developer>
+
+        <developer>
+            <id>carlos</id>
+        </developer>
+
+        <developer>
+            <id>user57</id>
+            <name>Jason Dillon</name>
+            <email>jason@planet57.com</email>
+        </developer>
+    </developers>
+
+    <dependencies>
+        <dependency>
+            <groupId>net.sf.retrotranslator</groupId>
+            <artifactId>retrotranslator-runtime</artifactId>
+            <version>1.0.8</version>
+        </dependency>
+
+        <dependency>
+            <groupId>net.sf.retrotranslator</groupId>
+            <artifactId>retrotranslator-transformer</artifactId>
+            <version>1.0.8</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.maven</groupId>
+            <artifactId>maven-plugin-api</artifactId>
+            <version>2.0.4</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.maven</groupId>
+            <artifactId>maven-archiver</artifactId>
+            <version>2.0.4</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <defaultGoal>install</defaultGoal>
+
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.4</source>
+                    <target>1.4</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
