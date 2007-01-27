@@ -113,7 +113,14 @@ public class RetrotranslateMojo
      * @required
      */
     private boolean failonwarning;
-
+    
+    /**
+     * Whether to use alternative implementations of Java 1.4 classes and methods for better Java 5 compatibility.
+     *
+     * @parameter default-value="false"
+     */
+    private boolean advanced;
+    
     /**
      * List the jar files and directorties to be included in the translation.
      *
@@ -169,6 +176,7 @@ public class RetrotranslateMojo
         retrotranslator.setStripsign(stripsign);
         retrotranslator.setLazy(lazy);
         retrotranslator.setVerify(verify);
+        retrotranslator.setAdvanced(advanced);
         
         if (classpathElements != null) {
             Iterator iter = classpathElements.iterator();
