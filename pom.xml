@@ -112,6 +112,15 @@
                     <target>1.4</target>
                 </configuration>
             </plugin>
+            
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-idea-plugin</artifactId>
+                <configuration>
+                    <jdkName>1.4</jdkName>
+                    <jdkLevel>1.4</jdkLevel>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 </project>
