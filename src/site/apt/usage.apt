@@ -1,5 +1,5 @@
  ------
- Basic Usage :: Retrotranslator Plugin for Maven 2
+ Usage :: Retrotranslator Plugin for Maven 2
  ------
  ------
  $Rev: 451673 $ $Date: 2006-09-30 14:25:25 -0700 (Sat, 30 Sep 2006) $
@@ -23,7 +23,7 @@
 ~~ under the License.
 ~~
 
-Basic Usage
+Usage
 
  There are 2 basic things you can translate:
  

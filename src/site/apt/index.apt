@@ -1,5 +1,5 @@
  ------
- Overview :: Retrotranslator Plugin for Maven 2
+ Introduction :: Retrotranslator Plugin for Maven 2
  ------
  ------
  $Rev: 451673 $ $Date: 2006-09-30 14:25:25 -0700 (Sat, 30 Sep 2006) $
@@ -23,7 +23,7 @@
 ~~ under the License.
 ~~
 
-Overview
+Retrotranslator Maven Plugin
 
  Provides the features of {{{http://retrotranslator.sourceforge.net}Retrotranslator}}
  within the Maven 2 environment.
@@ -33,11 +33,11 @@ Overview
  open-source tool based on the ASM bytecode manipulation framework and 
  concurrency utilities backported to Java 1.4
 
-Supported goals
+* Goals Overview
 
- {{{translate-mojo.html}retrotranslator:translate}} is the primary goal to translate classes and jar files.
- 
-Related links
- 
- {{{http://retrotranslator.sourceforge.net}Retrotranslator}}
+ * {{{translate-mojo.html}retrotranslator:translate}}: Translate classes and jar files.
+
+* Usage
+
+ Instructions on how to use the Retrotranslator Maven Plugin can be found {{{usage.html}here}}.
 
