@@ -21,7 +21,6 @@ package org.codehaus.mojo.retrotranslator;
 
 import java.io.File;
 
-import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 
@@ -29,16 +28,12 @@ import net.sf.retrotranslator.transformer.Retrotranslator;
 
 import org.apache.maven.plugin.MojoExecutionException;
 
-import org.codehaus.plexus.util.DirectoryScanner;
-import org.codehaus.plexus.util.FileUtils;
-
 /**
- * Goal which turns the bytecode into 1.4 compliant bytecode
+ * Support for retrotranlsation mojos.
  * 
- * @goal translate
- * @phase process-classes
+ * @noinspection UnusedDeclaration,MismatchedQueryAndUpdateOfCollection
  */
-public class RetrotranslateMojo
+public abstract class RetrotranslateMojoSupport
     extends MojoSupport
 {
     /**
@@ -58,26 +53,11 @@ public class RetrotranslateMojo
      * @parameter
      */
     private List verifyClasspath;
-    
-    /**
-     * The directory to place translated classes.
-     * 
-     * @parameter
-     */
-    private File destdir;
-
-    /**
-     * The JAR file to place translated classes.
-     * 
-     * @parameter
-     */
-    private File destjar;
 
     /**
      * Asks the translator to strip signature (generics) information.
      * 
      * @parameter default-value="false"
-     * @required
      */
     private boolean stripsign;
 
@@ -85,7 +65,6 @@ public class RetrotranslateMojo
      * Asks the translator for verbose output.
      * 
      * @parameter default-value="false"
-     * @required
      */
     private boolean verbose;
 
@@ -94,7 +73,6 @@ public class RetrotranslateMojo
      * to classes, methods, or fields that cannot be found in the provided classpath.
      * 
      * @parameter default-value="false"
-     * @required
      */
     private boolean verify;
 
@@ -103,7 +81,6 @@ public class RetrotranslateMojo
      * with a target greater than the current one.
      * 
      * @parameter default-value="false"
-     * @required
      */
     private boolean lazy;
 
@@ -111,7 +88,6 @@ public class RetrotranslateMojo
      * Fails build when verification has failed.
      * 
      * @parameter default-value="true"
-     * @required
      */
     private boolean failonwarning;
     
@@ -122,22 +98,6 @@ public class RetrotranslateMojo
      * @parameter default-value="false"
      */
     private boolean advanced;
-    
-    /**
-     * List the jar files and directorties to be included in the translation.
-     *
-     * @parameter
-     * @required
-     */
-    private Include[] includes;
-    
-    /**
-     * The wildcard pattern specifying files that should be translated (either bytecode 
-     * or UTF-8 text), e.g. "*.class;*.tld". There are three special characters: "*?;".
-     * 
-     * @parameter default-value="*.class"
-     */
-    private String srcmask;
 
     /**
      * The package name for a private copy of retrotranslator-runtime-n.n.n.jar 
@@ -181,52 +141,14 @@ public class RetrotranslateMojo
     protected void doExecute() throws Exception {
         Retrotranslator retrotranslator = new Retrotranslator();
         retrotranslator.setLogger(new RetrotranslatorLogger(log));
-        
-        for (int i=0; i < includes.length; i++) {
-            File dir = includes[i].getDirectory();
-            String pattern = includes[i].getPattern();
 
-            if (pattern != null) {
-                DirectoryScanner scanner = new DirectoryScanner();
-                scanner.setBasedir(dir);
-                scanner.setIncludes(new String[] { pattern });
-                scanner.scan();
-
-                List includedFiles = Arrays.asList(scanner.getIncludedFiles());
-                for (Iterator j = includedFiles.iterator(); j.hasNext();) {
-                    String name = (String) j.next();
-                    File file = new File(dir, name);
-
-                    if (file.isFile()) {
-                        retrotranslator.addSrcjar(file);
-                    }
-                    else if (file.exists()) {
-                        retrotranslator.addSrcdir(file);
-                    }
-                    else {
-                        throw new MojoExecutionException("Path not found: " + file);
-                    }
-                }
-            }
-            else if (dir != null) {
-                retrotranslator.addSrcdir(dir);
-            }
-        }
-
-        if (destdir != null) {
-            FileUtils.forceMkdir(destdir);
-            retrotranslator.setDestdir(destdir);
-        }
-        if (destjar != null) {
-            retrotranslator.setDestjar(destjar);
-        }
+        configureRetrotranslator(retrotranslator);
 
         retrotranslator.setVerbose(verbose);
         retrotranslator.setStripsign(stripsign);
         retrotranslator.setLazy(lazy);
         retrotranslator.setVerify(verify);
         retrotranslator.setAdvanced(advanced);
-        retrotranslator.setSrcmask(srcmask);
         retrotranslator.setEmbed(embed);
         retrotranslator.setBackport(backport);
         retrotranslator.setRetainapi(retainapi);
@@ -262,4 +184,6 @@ public class RetrotranslateMojo
             throw new MojoExecutionException("Verification failed.");
         }
     }
+
+    protected abstract void configureRetrotranslator(Retrotranslator retrotranslator) throws Exception;
 }
