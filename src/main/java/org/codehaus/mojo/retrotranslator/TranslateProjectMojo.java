@@ -54,14 +54,14 @@ public class TranslateProjectMojo
     /**
      * Flag to enable/disable attaching retrotranslated artifacts.
      *
-     * @parameter default-value="true"
+     * @parameter expression="${attach}" default-value="true"
      */
     private boolean attach;
     
     /**
      * The classifier used when attaching the retrotranslated project artifact.
      *
-     * @parameter expression="jdk14"
+     * @parameter expression="${classifier}" default-value="jdk14"
      */
     private String classifier;
 

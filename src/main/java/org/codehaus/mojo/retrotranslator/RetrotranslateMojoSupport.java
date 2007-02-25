@@ -57,14 +57,14 @@ public abstract class RetrotranslateMojoSupport
     /**
      * Asks the translator to strip signature (generics) information.
      * 
-     * @parameter default-value="false"
+     * @parameter expression="${stripsign}" default-value="false"
      */
     private boolean stripsign;
 
     /**
      * Asks the translator for verbose output.
      * 
-     * @parameter default-value="false"
+     * @parameter expression="${verbose}" default-value="false"
      */
     private boolean verbose;
 
@@ -72,7 +72,7 @@ public abstract class RetrotranslateMojoSupport
      * Asks the translator to examine translated bytecode for references 
      * to classes, methods, or fields that cannot be found in the provided classpath.
      * 
-     * @parameter default-value="false"
+     * @parameter expression="${verify}" default-value="false"
      */
     private boolean verify;
 
@@ -80,14 +80,14 @@ public abstract class RetrotranslateMojoSupport
      * Asks the translator to only transform classes compiled 
      * with a target greater than the current one.
      * 
-     * @parameter default-value="false"
+     * @parameter expression="${lazy}" default-value="false"
      */
     private boolean lazy;
 
     /**
      * Fails build when verification has failed.
      * 
-     * @parameter default-value="true"
+     * @parameter expression="${failonwarning}" default-value="true"
      */
     private boolean failonwarning;
     
@@ -95,7 +95,7 @@ public abstract class RetrotranslateMojoSupport
      * Whether to use alternative implementations of Java 1.4 
      * classes and methods for better Java 5 compatibility.
      *
-     * @parameter default-value="false"
+     * @parameter expression="${advanced}" default-value="false"
      */
     private boolean advanced;
 
@@ -103,7 +103,7 @@ public abstract class RetrotranslateMojoSupport
      * The package name for a private copy of retrotranslator-runtime-n.n.n.jar 
      * and backport-util-concurrent-n.n.jar to be put with translated classes.
      * 
-     * @parameter
+     * @parameter expression="${embed}"
      */
     private String embed;
 
@@ -111,7 +111,7 @@ public abstract class RetrotranslateMojoSupport
      * Informs the translator about user-defined backport packages.
      * Package names should be separated by semicolons.
      * 
-     * @parameter
+     * @parameter expression="${backport}"
      */
     private String backport;
 
@@ -119,7 +119,7 @@ public abstract class RetrotranslateMojoSupport
      * To make Java 6 classes compatible with Java 5 set this option to 1.5
      * and supply user-defined backport packages.
      * 
-     * @parameter default-value="1.4"
+     * @parameter expression="${target}" default-value="1.4"
      */
     private String target;
     
@@ -127,14 +127,14 @@ public abstract class RetrotranslateMojoSupport
      * Asks the translator to modify classes for JVM 1.4 compatibility 
      * but keep use of Java 5 API.
      *
-     * @parameter default-value="false"
+     * @parameter expression="${retainapi}" default-value="false"
      */
     private boolean retainapi;
 
     /**
      * Asks the translator to keep Java 5 specific access modifiers.
      *
-     * @parameter default-value="false"
+     * @parameter expression="${retainflags}" default-value="false"
      */
     private boolean retainflags;
 

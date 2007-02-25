@@ -43,14 +43,14 @@ public class TranslateMojo
     /**
      * The directory to place translated classes.
      * 
-     * @parameter
+     * @parameter expression="${destdir}"
      */
     private File destdir;
 
     /**
      * The JAR file to place translated classes.
      * 
-     * @parameter
+     * @parameter expression="${destjar}"
      */
     private File destjar;
 
@@ -72,7 +72,7 @@ public class TranslateMojo
      * The wildcard pattern specifying files that should be translated (either bytecode 
      * or UTF-8 text), e.g. "*.class;*.tld". There are three special characters: "*?;".
      * 
-     * @parameter default-value="*.class"
+     * @parameter expression="${srcmask}" default-value="*.class"
      */
     private String srcmask;
 
