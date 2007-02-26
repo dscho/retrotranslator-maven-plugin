@@ -136,6 +136,7 @@ Usage
                         <include>**/*.class</include>
                     </includes>
                 </fileset>
+                <verify>true</verify>
                 <verifyClasspath>
                     <element>${path_to_rt.jar}</element>
                 </verifyClasspath>
