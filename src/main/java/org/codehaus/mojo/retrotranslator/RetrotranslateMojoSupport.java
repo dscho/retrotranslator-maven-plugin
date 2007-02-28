@@ -30,6 +30,8 @@ import org.apache.maven.plugin.MojoExecutionException;
 
 import org.codehaus.mojo.pluginsupport.MojoSupport;
 
+import org.apache.commons.lang.SystemUtils;
+
 /**
  * Support for retrotranlsation mojos.
  * 
@@ -181,15 +183,32 @@ public abstract class RetrotranslateMojoSupport
             }
         }
         
-        if (verifyClasspath != null) {
-            Iterator iter = verifyClasspath.iterator();
-            while (iter.hasNext()) {
-                String path = (String)iter.next();
-                if (path == null) {
-                    throw new MojoExecutionException("Null element in <verifyClasspath>");
+        
+        if (verify) {
+            if (SystemUtils.IS_JAVA_1_4) {
+                System.err.println("IS JAVA 1.4");
+                retrotranslator.setClassLoader(ClassLoader.getSystemClassLoader());
+            }
+            else {
+                if (verifyClasspath == null) {
+                    throw new MojoExecutionException("Verify classpath must be specified for non-1.4 JVM's");
                 }
-                File file = new File(path);
-                retrotranslator.addClasspathElement(file);
+            }
+            
+            if (verifyClasspath != null) {
+                if (SystemUtils.IS_JAVA_1_4) {
+                    log.warn("Invoking JVM is Java 1.4, extra classpath for verify is unneeded");
+                }
+                
+                Iterator iter = verifyClasspath.iterator();
+                while (iter.hasNext()) {
+                    String path = (String)iter.next();
+                    if (path == null) {
+                        throw new MojoExecutionException("Null element in <verifyClasspath>");
+                    }
+                    File file = new File(path);
+                    retrotranslator.addClasspathElement(file);
+                }
             }
         }
         
