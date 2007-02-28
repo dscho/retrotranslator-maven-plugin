@@ -30,7 +30,7 @@
     </parent>
 
     <artifactId>retrotranslator-maven-plugin</artifactId>
-    <name>Retrotranslator Plugin for Maven 2</name>
+    <name>Retrotranslator MAven Plugin</name>
     <packaging>maven-plugin</packaging>
 
     <version>1.0-alpha-2-SNAPSHOT</version>
@@ -97,6 +97,12 @@
             <groupId>org.apache.maven</groupId>
             <artifactId>maven-archiver</artifactId>
             <version>2.0.4</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>plugin-support</artifactId>
+            <version>1.0-alpha-1-SNAPSHOT</version>
         </dependency>
     </dependencies>
 

@@ -28,6 +28,8 @@ import net.sf.retrotranslator.transformer.Retrotranslator;
 
 import org.apache.maven.plugin.MojoExecutionException;
 
+import org.codehaus.mojo.pluginsupport.MojoSupport;
+
 /**
  * Support for retrotranlsation mojos.
  * 
