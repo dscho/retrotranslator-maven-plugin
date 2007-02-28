@@ -68,14 +68,6 @@ public class TranslateMojo
      */
     private DirectoryScanner jarfileset;
 
-    /**
-     * The wildcard pattern specifying files that should be translated (either bytecode 
-     * or UTF-8 text), e.g. "*.class;*.tld". There are three special characters: "*?;".
-     * 
-     * @parameter expression="${srcmask}" default-value="*.class"
-     */
-    private String srcmask;
-
     protected void configureRetrotranslator(final Retrotranslator retrotranslator) throws Exception {
         assert retrotranslator != null;
 
@@ -107,9 +99,6 @@ public class TranslateMojo
         }
         if (destjar != null) {
             retrotranslator.setDestjar(destjar);
-        }
-        if (srcmask != null) {
-            retrotranslator.setSrcmask(srcmask);
         }
     }
 }

@@ -132,14 +132,22 @@ public abstract class RetrotranslateMojoSupport
      * @parameter expression="${retainapi}" default-value="false"
      */
     private boolean retainapi;
-
+    
     /**
      * Asks the translator to keep Java 5 specific access modifiers.
      *
      * @parameter expression="${retainflags}" default-value="false"
      */
     private boolean retainflags;
-
+    
+    /**
+     * The wildcard pattern specifying files that should be translated (either bytecode 
+     * or UTF-8 text), e.g. "*.class;*.tld". There are three special characters: "*?;".
+     * 
+     * @parameter expression="${srcmask}" default-value="*.class"
+     */
+    private String srcmask;
+    
     protected void doExecute() throws Exception {
         Retrotranslator retrotranslator = new Retrotranslator();
         retrotranslator.setLogger(new RetrotranslatorLogger(log));
@@ -158,6 +166,10 @@ public abstract class RetrotranslateMojoSupport
         
         if (target != null) {
             retrotranslator.setTarget(target);
+        }
+        
+        if (srcmask != null) {
+            retrotranslator.setSrcmask(srcmask);
         }
         
         if (classpathElements != null) {
