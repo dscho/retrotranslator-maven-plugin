@@ -28,40 +28,56 @@ import org.apache.maven.project.MavenProjectHelper;
 import org.apache.maven.artifact.handler.ArtifactHandler;
 
 /**
- * Retrotranslates the artifact for the current project.
- * 
- * @goal translate-project
- * @phase package
+ * Support for mojos which attach.
  *
  * @noinspection UnusedDeclaration
  */
-public class TranslateProjectMojo
-    extends AttachingMojoSupport
+public abstract class AttachingMojoSupport
+    extends RetrotranslateMojoSupport
 {
-    private File destJar;
+    /**
+     * The maven project.
+     *
+     * @parameter expression="${project}"
+     * @required
+     * @readonly
+     */
+    protected MavenProject project;
 
-    protected void doExecute() throws Exception {
-        // Only execute if the current project looks like its got Java bits in it
-        ArtifactHandler artifactHandler = project.getArtifact().getArtifactHandler();
-        if (!artifactHandler.getLanguage().equals("java")) {
-            log.debug("Not executing on non-Java project");
-            return;
-        }
-        
-        super.doExecute();
-        
-        if (attach) {
-            projectHelper.attachArtifact(project, "jar", classifier, destJar);
-        }
-    }
+    /**
+     * @component
+     * @required
+     * @readonly
+     */
+    protected MavenProjectHelper projectHelper;
 
-    protected void configureRetrotranslator(final Retrotranslator retrotranslator) throws Exception {
-        assert retrotranslator != null;
+    /**
+     * Where to put the translated artifact.
+     *
+     * @parameter expression="${project.build.directory}"
+     * @required
+     */
+    protected File outputDirectory;
 
-        retrotranslator.addSrcjar(project.getArtifact().getFile());
-        
-        destJar = new File(outputDirectory, baseName + "-" + classifier + ".jar");
+    /**
+     * The base-name of the generated artifact.
+     *
+     * @parameter expression="${project.build.finalName}"
+     * @required
+     */
+    protected String baseName;
 
-        retrotranslator.setDestjar(destJar);
-    }
+    /**
+     * Flag to enable/disable attaching retrotranslated artifacts.
+     *
+     * @parameter expression="${attach}" default-value="true"
+     */
+    protected boolean attach;
+
+    /**
+     * The classifier used when attaching the retrotranslated project artifact.
+     *
+     * @parameter expression="${classifier}" default-value="jdk14"
+     */
+    protected String classifier;
 }

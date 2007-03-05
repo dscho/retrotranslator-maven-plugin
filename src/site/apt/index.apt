@@ -38,6 +38,8 @@ Retrotranslator Maven Plugin
  * {{{translate-mojo.html}retrotranslator:translate}}: Translate classes and jar files.
 
  * {{{translate-project-mojo.html}retrotranslator:translate-project}}: Translate Maven projects (and optionally attach).
+ 
+ * {{{translate-war-mojo.html}retrotranslator:translate-war}}: Translate Maven War projects (and optionally attach).
 
  []
 

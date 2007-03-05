@@ -152,7 +152,7 @@ public abstract class RetrotranslateMojoSupport
     
     protected void doExecute() throws Exception {
         Retrotranslator retrotranslator = new Retrotranslator();
-        retrotranslator.setLogger(new RetrotranslatorLogger(log));
+        retrotranslator.setLogger(new RetrotranslatorLogger(this.getLog()));
 
         configureRetrotranslator(retrotranslator);
 
@@ -182,7 +182,6 @@ public abstract class RetrotranslateMojoSupport
                 retrotranslator.addClasspathElement(file);
             }
         }
-        
         
         if (verify) {
             if (SystemUtils.IS_JAVA_1_4) {

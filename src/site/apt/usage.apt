@@ -25,13 +25,15 @@
 
 Usage
 
- There are 3 basic things you can translate:
+ There are a few basic things you can translate:
  
  * Class files
  
  * Jar files
 
  * Jar Maven Projects
+ 
+ * WAR Maven Projects
  
  []
 
@@ -106,6 +108,58 @@ Usage
             </goals>
             <configuration>
                 <classifier>jdk14</classifier>
+                <attach>true</attach>
+            </configuration>
+        </execution>
+    </executions>
+</plugin>
++----------+
+
+* Translate a War Maven Project
+ 
+ When executing on a <<war>> project, the <<<translate-war>>> goal will translate the 
+ contents (classes directory and jars in the lib directory) of the project's artifact 
+ (war file) and then optionally attach the new retrotranslated artifact to be included 
+ in <<<install>>> and <<<deploy>>> operations.
+ 
++----------+
+<plugin>
+    <groupId>org.codehaus.mojo</groupId>
+    <artifactId>retrotranslator-maven-plugin</artifactId>
+    <executions>
+        <execution>
+            <goals>
+              <goal>translate-war</goal>
+            </goals>
+            <configuration>
+                <classifier>jdk1.4</classifier>
+                <attach>true</attach>
+            </configuration>
+        </execution>
+    </executions>
+</plugin>
++----------+
+
+* Translating only specific Jars in a War Maven Project
+
+ Sometimes (especially when also performing verification) you only want some jars translated.
+ 
++----------+
+<plugin>
+    <groupId>org.codehaus.mojo</groupId>
+    <artifactId>retrotranslator-maven-plugin</artifactId>
+    <executions>
+        <execution>
+            <goals>
+              <goal>translate-war</goal>
+            </goals>
+            <configuration>
+                <jarfileset>
+                    <includes>
+                        <include>myproject-*.jar</include>
+                    </includes>
+                </jarfileset>
+                <classifier>jdk1.4</classifier>
                 <attach>true</attach>
             </configuration>
         </execution>
