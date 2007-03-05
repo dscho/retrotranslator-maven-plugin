@@ -20,7 +20,6 @@
 package org.codehaus.mojo.retrotranslator;
 
 import java.io.File;
-import java.util.Arrays;
 
 import net.sf.retrotranslator.transformer.Retrotranslator;
 
@@ -28,10 +27,6 @@ import org.apache.maven.archiver.MavenArchiveConfiguration;
 import org.apache.maven.archiver.MavenArchiver;
 
 import org.apache.maven.plugin.MojoExecutionException;
-import org.apache.maven.plugin.MojoFailureException;
-
-import org.apache.maven.project.MavenProject;
-import org.apache.maven.project.MavenProjectHelper;
 
 import org.codehaus.plexus.archiver.war.WarArchiver;
 import org.codehaus.plexus.util.DirectoryScanner;

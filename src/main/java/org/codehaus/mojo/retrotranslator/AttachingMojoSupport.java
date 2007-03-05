@@ -21,11 +21,8 @@ package org.codehaus.mojo.retrotranslator;
 
 import java.io.File;
 
-import net.sf.retrotranslator.transformer.Retrotranslator;
-
 import org.apache.maven.project.MavenProject;
 import org.apache.maven.project.MavenProjectHelper;
-import org.apache.maven.artifact.handler.ArtifactHandler;
 
 /**
  * Support for mojos which attach.
