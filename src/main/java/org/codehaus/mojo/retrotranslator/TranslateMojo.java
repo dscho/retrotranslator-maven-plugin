@@ -29,6 +29,9 @@ import net.sf.retrotranslator.transformer.Retrotranslator;
 import org.codehaus.plexus.util.DirectoryScanner;
 import org.codehaus.plexus.util.FileUtils;
 
+import org.apache.maven.shared.model.fileset.FileSet;
+import org.apache.maven.shared.model.fileset.util.FileSetManager;
+
 /**
  * Retrotranslates jars and classes.
  * 
@@ -55,41 +58,61 @@ public class TranslateMojo
     private File destjar;
 
     /**
-     * A set of source files to include in the translation.
+     * Files to include in the translation.
      *
      * @parameter
      */
-    private DirectoryScanner fileset;
-    
+    private FileSet[] filesets;
+
     /**
-     * A set of jar files to include in the translation.
+     * Jar files to include in the translation.
      *
      * @parameter
      */
-    private DirectoryScanner jarfileset;
+    private FileSet[] jarfilesets;
+
+    /**
+     * Directories to include in the translation.
+     *
+     * @parameter
+     */
+    private FileSet[] dirsets;
 
     protected void configureRetrotranslator(final Retrotranslator retrotranslator) throws Exception {
         assert retrotranslator != null;
 
-        if (fileset != null) {
-            fileset.addDefaultExcludes();
-            fileset.scan();
+        FileSetManager fsm = new FileSetManager(log, log.isDebugEnabled());
 
-            String[] filenames = fileset.getIncludedFiles();
-            if (filenames.length != 0) {
-                List includes = Arrays.asList(filenames);
-                retrotranslator.addSourceFiles(fileset.getBasedir(), includes);
+        if (filesets != null) {
+            for (int i=0; i<filesets.length; i++) {
+                File basedir = new File(filesets[i].getDirectory());
+                String[] includes = fsm.getIncludedFiles(filesets[i]);
+
+                retrotranslator.addSourceFiles(basedir, Arrays.asList(includes));
             }
         }
 
-        if (jarfileset != null) {
-            jarfileset.addDefaultExcludes();
-            jarfileset.scan();
+        if (jarfilesets != null) {
+            for (int i=0; i<jarfilesets.length; i++) {
+                File basedir = new File(jarfilesets[i].getDirectory());
+                String[] includes = fsm.getIncludedFiles(jarfilesets[i]);
 
-            String[] filenames = jarfileset.getIncludedFiles();
-            for (int i=0; i<filenames.length; i++) {
-                File file = new File(jarfileset.getBasedir(), filenames[i]);
-                retrotranslator.addSrcjar(file);
+                for (int j=0; j < includes.length; j++) {
+                    File file = new File(basedir, includes[j]);
+                    retrotranslator.addSrcjar(file);
+                }
+            }
+        }
+
+        if (dirsets != null) {
+            for (int i=0; i<dirsets.length; i++) {
+                File basedir = new File(dirsets[i].getDirectory());
+                String[] includes = fsm.getIncludedDirectories(dirsets[i]);
+
+                for (int j=0; j < includes.length; j++) {
+                    File dir = new File(basedir, includes[j]);
+                    retrotranslator.addSrcdir(dir);
+                }
             }
         }
 
@@ -97,6 +120,7 @@ public class TranslateMojo
             FileUtils.forceMkdir(destdir);
             retrotranslator.setDestdir(destdir);
         }
+
         if (destjar != null) {
             retrotranslator.setDestjar(destjar);
         }

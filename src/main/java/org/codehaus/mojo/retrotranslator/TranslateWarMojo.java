@@ -44,6 +44,10 @@ import org.codehaus.plexus.util.FileUtils;
 public class TranslateWarMojo
     extends AttachingMojoSupport
 {
+    //
+    // TODO: Maybe use a FileSet here instead... ?
+    //
+    
     /**
      * A set of jar files to include in the translation.  Note: any basedir will
      * be ignored and reset to WEB-INF/lib
