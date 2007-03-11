@@ -43,7 +43,10 @@ Retrotranslator Maven Plugin
 
  []
 
-* Usage
+* Examples
 
- Instructions on how to use the Retrotranslator Maven Plugin can be found {{{usage.html}here}}.
+ * {{{examples/general-translation.html}Flexible input selection translation}}.
 
+ * {{{examples/project-translation.html}Translation based on Maven project type}}.
+
+ []
