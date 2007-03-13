@@ -29,11 +29,16 @@ import org.objectweb.asm.ClassReader
 class UsesJava5Test
     extends TestCase
 {
-    void testClassMajorMinor() {
-        def file = new File("target/classes-jdk14/UsesJava5.class")
+    void verifyClass(file, major, minor) {
+        file = new File("$file")
         assert file.exists()
         
         def reader = new ClassReader(file.newInputStream())
-        reader.accept(new CheckJavaVersionVisitor(48, 0), 0)
+        reader.accept(new CheckJavaVersionVisitor(major, minor), 0)
+    }
+    
+    void testClassMajorMinor() {
+        verifyClass('target/classes/UsesJava5.class', 49, 0)
+        verifyClass('target/classes-jdk14/UsesJava5.class', 48, 0)
     }
 }
