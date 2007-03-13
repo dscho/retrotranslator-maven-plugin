@@ -18,7 +18,7 @@
  */
 
 /**
- * ???
+ * A simple class which uses some Java 5 features.
  *
  * @version $Id$
  */

@@ -22,7 +22,7 @@ import junit.framework.TestCase
 import org.objectweb.asm.ClassReader
 
 /**
- * ???
+ * Verifies that translation generates byte code for the right JVM major/minor versions.
  *
  * @version $Id$
  */

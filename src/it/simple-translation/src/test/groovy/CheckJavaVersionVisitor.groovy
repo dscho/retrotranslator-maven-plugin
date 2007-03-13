@@ -20,7 +20,7 @@
 import org.objectweb.asm.commons.EmptyVisitor
 
 /**
- * ???
+ * Validates byte-code is using the correct major/minor version.
  *
  * @version $Id$
  */
