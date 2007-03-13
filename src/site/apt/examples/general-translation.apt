@@ -42,7 +42,7 @@ General Translation
             <configuration>
                 <filesets>
                     <fileset>
-                        <basedir>${project.build.outputDirectory}</basedir>
+                        <directory>${project.build.outputDirectory}</directory>
                         <includes>
                             <include>**/*.class</include>
                         </includes>
@@ -69,7 +69,7 @@ General Translation
             <configuration>
                 <jarfilesets>
                     <jarfileset>
-                        <basedir>${pom.basedir}/lib</basedir>
+                        <directory>${pom.basedir}/lib</directory>
                         <includes>
                             <include>**/*.jar</include>
                         </includes>
@@ -100,7 +100,7 @@ General Translation
             <configuration>
                 <filesets>
                     <fileset>
-                        <basedir>${project.build.outputDirectory}</basedir>
+                        <directory>${project.build.outputDirectory}</directory>
                         <includes>
                             <include>**/*.class</include>
                         </includes>
