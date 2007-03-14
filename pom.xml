@@ -188,11 +188,4 @@
             </build>
         </profile>
     </profiles>
-
-
-  <scm>
-    <connection>scm:svn:https://svn.codehaus.org/mojo/tags/retrotranslator-maven-plugin-1.0-alpha-2</connection>
-    <developerConnection>scm:svn:https://svn.codehaus.org/mojo/tags/retrotranslator-maven-plugin-1.0-alpha-2</developerConnection>
-    <url>https://svn.codehaus.org/mojo/tags/retrotranslator-maven-plugin-1.0-alpha-2</url>
-  </scm>
 </project>
