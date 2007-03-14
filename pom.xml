@@ -33,7 +33,7 @@
     <name>Retrotranslator MAven Plugin</name>
     <packaging>maven-plugin</packaging>
 
-    <version>1.0-alpha-2-SNAPSHOT</version>
+    <version>1.0-alpha-2</version>
 
     <url>http://mojo.codehaus.org/retrotranslator-maven-plugin</url>
     <inceptionYear>2005</inceptionYear>
@@ -189,4 +189,10 @@
         </profile>
     </profiles>
 
+
+  <scm>
+    <connection>scm:svn:https://svn.codehaus.org/mojo/tags/retrotranslator-maven-plugin-1.0-alpha-2</connection>
+    <developerConnection>scm:svn:https://svn.codehaus.org/mojo/tags/retrotranslator-maven-plugin-1.0-alpha-2</developerConnection>
+    <url>https://svn.codehaus.org/mojo/tags/retrotranslator-maven-plugin-1.0-alpha-2</url>
+  </scm>
 </project>
