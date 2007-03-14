@@ -30,7 +30,7 @@
     </parent>
 
     <artifactId>retrotranslator-maven-plugin</artifactId>
-    <name>Retrotranslator MAven Plugin</name>
+    <name>Retrotranslator Maven Plugin</name>
     <packaging>maven-plugin</packaging>
 
     <version>1.0-alpha-3-SNAPSHOT</version>
