@@ -33,7 +33,7 @@
     <name>Retrotranslator MAven Plugin</name>
     <packaging>maven-plugin</packaging>
 
-    <version>1.0-alpha-2</version>
+    <version>1.0-alpha-2-SNAPSHOT</version>
 
     <url>http://mojo.codehaus.org/retrotranslator-maven-plugin</url>
     <inceptionYear>2005</inceptionYear>
