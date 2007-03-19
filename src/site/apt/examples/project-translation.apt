@@ -25,6 +25,16 @@
 
 Translating Maven Projects
 
+ <<NOTE:>> The examples below, unless otherwise specified, all assume that the
+ Maven build is invoked with a life-cycle phase:
+
++----------+
+mvn install
++----------+
+
+ Due to the use of executions configurations, invoking the named goals from the 
+ command-line will fail to function correctly.
+
 * Translate a Jar Maven Project
 
  When executing on a <<jar>> project, the <<<translate-project>>> goal will translate the
