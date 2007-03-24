@@ -41,7 +41,12 @@
     <description>
         Translates Java 5 classes to be compatible with J2SE 1.4 using Retrotranslator.
     </description>
-
+    
+    <issueManagement>
+        <system>jira</system>
+        <url>http://jira.codehaus.org/browse/MRETRO</url>
+    </issueManagement>
+    
     <licenses>
         <license>
             <name>Apache License 2</name>
