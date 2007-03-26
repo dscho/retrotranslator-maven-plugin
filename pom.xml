@@ -25,7 +25,7 @@
     <parent>
         <artifactId>mojo</artifactId>
         <groupId>org.codehaus.mojo</groupId>
-        <version>13</version>
+        <version>14</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
