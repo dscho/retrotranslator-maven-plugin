@@ -170,11 +170,11 @@
     
     <profiles>
         <profile>
-            <id>integration-tests</id>
+            <id>super-helpful-integration-tests</id>
             
             <activation>
                 <property>
-                    <name>it</name>
+                    <name>shit</name>
                     <value>true</value>
                 </property>
             </activation>
@@ -182,71 +182,47 @@
             <build>
                 <plugins>
                     <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-clean-plugin</artifactId>
+                        <groupId>org.codehaus.mojo</groupId>
+                        <artifactId>shitty-maven-plugin</artifactId>
+                        <version>1.0-alpha-1-SNAPSHOT</version>
                         <executions>
                             <execution>
-                                <phase>validate</phase>
                                 <goals>
                                     <goal>clean</goal>
+                                    <goal>install</goal>
+                                    <goal>test</goal>
                                 </goals>
-                                <configuration>
-                                    <filesets>
-                                        <fileset>
-                                            <directory>src/it</directory>
-                                            <includes>
-                                                <include>**/target</include>
-                                                <include>**/build.log</include>
-                                            </includes>
-                                        </fileset>
-                                    </filesets>
-                                </configuration>
-                            </execution>
-                        </executions>
-                    </plugin>
-                    
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-install-plugin</artifactId>
-                        <executions>
-                            <execution>
-                                <phase>pre-integration-test</phase>
-                                <goals>
-                                    <goal>install-file</goal>
-                                </goals>
-                                <configuration>
-                                    <groupId>${pom.groupId}</groupId>
-                                    <artifactId>${pom.artifactId}</artifactId>
-                                    <version>testing</version>
-                                    <packaging>jar</packaging>
-                                    <file>${project.build.directory}/${project.build.finalName}.jar</file>
-                                    <pomFile>${pom.basedir}/pom.xml</pomFile>
-                                    <createChecksum>true</createChecksum>
-                                </configuration>
-                            </execution>
-                        </executions>
-                    </plugin>
-                    
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-invoker-plugin</artifactId>
-                        <executions>
-                            <execution>
-                                <phase>integration-test</phase>
-                                <goals>
-                                    <goal>run</goal>
-                                </goals>
-                                <configuration>
-                                    <projectsDirectory>src/it</projectsDirectory>
-                                    <pomIncludes>
-                                        <pomInclude>*/pom.xml</pomInclude>
-                                    </pomIncludes>
-                                </configuration>
                             </execution>
                         </executions>
                     </plugin>
                 </plugins>
             </build>
         </profile>
+        
+        <profile>
+            <id>stage-distribution</id>
+            
+            <activation>
+                <property>
+                    <name>stage.distributionUrl</name>
+                </property>
+            </activation>
+            
+            <distributionManagement>
+                <repository>
+                    <id>stage-repository</id>
+                    <url>${stage.distributionUrl}/repository</url>
+                </repository>
+                <snapshotRepository>
+                    <id>stage-snapshot-repository</id>
+                    <url>${stage.distributionUrl}/snapshot-repository</url>
+                </snapshotRepository>
+                <site>
+                    <id>stage-site</id>
+                    <url>${stage.distributionUrl}/site</url>
+                </site>
+            </distributionManagement>
+        </profile>
     </profiles>
+
 </project>
