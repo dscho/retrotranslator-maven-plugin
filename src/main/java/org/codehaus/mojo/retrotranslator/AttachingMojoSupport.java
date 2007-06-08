@@ -35,22 +35,6 @@ public abstract class AttachingMojoSupport
     extends RetrotranslateMojoSupport
 {
     /**
-     * The maven project.
-     *
-     * @parameter expression="${project}"
-     * @required
-     * @readonly
-     */
-    protected MavenProject project;
-
-    /**
-     * @component
-     * @required
-     * @readonly
-     */
-    protected MavenProjectHelper projectHelper;
-
-    /**
      * Where to put the translated artifact.
      *
      * @parameter expression="${project.build.directory}"
@@ -79,4 +63,22 @@ public abstract class AttachingMojoSupport
      * @parameter expression="${classifier}" default-value="jdk14"
      */
     protected String classifier;
+    
+    //
+    // Components
+    //
+    
+    /**
+     * @parameter expression="${project}"
+     * @required
+     * @readonly
+     */
+    protected MavenProject project;
+
+    /**
+     * @component
+     * @required
+     * @readonly
+     */
+    protected MavenProjectHelper projectHelper;
 }
