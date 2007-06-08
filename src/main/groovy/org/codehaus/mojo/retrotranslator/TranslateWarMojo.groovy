@@ -24,8 +24,6 @@ import net.sf.retrotranslator.transformer.Retrotranslator
 import org.apache.maven.archiver.MavenArchiveConfiguration
 import org.apache.maven.archiver.MavenArchiver
 
-import org.apache.maven.plugin.MojoExecutionException
-
 import org.codehaus.plexus.archiver.war.WarArchiver
 import org.codehaus.plexus.util.DirectoryScanner
 import org.codehaus.plexus.util.FileUtils
