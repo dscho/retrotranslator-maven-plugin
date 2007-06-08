@@ -27,6 +27,8 @@ import org.apache.maven.project.MavenProjectHelper;
 /**
  * Support for mojos which attach.
  *
+ * @version $Id$
+ *
  * @noinspection UnusedDeclaration
  */
 public abstract class AttachingMojoSupport

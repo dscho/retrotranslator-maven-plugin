@@ -38,6 +38,8 @@ import org.apache.maven.shared.model.fileset.util.FileSetManager;
  * @goal translate
  * @phase process-classes
  *
+ * @version $Id$
+ *
  * @noinspection UnusedDeclaration,MismatchedReadAndWriteOfArray
  */
 public class TranslateMojo

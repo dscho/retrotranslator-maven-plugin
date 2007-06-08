@@ -35,6 +35,8 @@ import org.apache.commons.lang.SystemUtils;
 /**
  * Support for retrotranlsation mojos.
  * 
+ * @version $Id$
+ *
  * @noinspection UnusedDeclaration,MismatchedQueryAndUpdateOfCollection
  */
 public abstract class RetrotranslateMojoSupport

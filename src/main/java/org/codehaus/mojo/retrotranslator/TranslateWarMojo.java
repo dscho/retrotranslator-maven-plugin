@@ -39,6 +39,8 @@ import org.codehaus.plexus.util.FileUtils;
  * @goal translate-war
  * @phase package
  *
+ * @version $Id$
+ *
  * @noinspection UnusedDeclaration
  */
 public class TranslateWarMojo

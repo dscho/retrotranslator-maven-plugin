@@ -31,6 +31,8 @@ import org.apache.maven.artifact.handler.ArtifactHandler;
  * @goal translate-project
  * @phase package
  *
+ * @version $Id$
+ *
  * @noinspection UnusedDeclaration
  */
 public class TranslateProjectMojo
