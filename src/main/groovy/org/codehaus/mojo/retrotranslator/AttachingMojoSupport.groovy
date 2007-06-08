@@ -4,7 +4,7 @@
  * distributed with this work for additional information
  * regarding copyright ownership.  The ASF licenses this file
  * to you under the Apache License, Version 2.0 (the
- * "License"); you may not use this file except in compliance
+ * "License") you may not use this file except in compliance
  * with the License.  You may obtain a copy of the License at
  *
  *  http://www.apache.org/licenses/LICENSE-2.0
@@ -17,21 +17,17 @@
  * under the License.
  */
 
-package org.codehaus.mojo.retrotranslator;
+package org.codehaus.mojo.retrotranslator
 
-import java.io.File;
-
-import org.apache.maven.project.MavenProject;
-import org.apache.maven.project.MavenProjectHelper;
+import org.apache.maven.project.MavenProject
+import org.apache.maven.project.MavenProjectHelper
 
 /**
  * Support for mojos which attach.
  *
  * @version $Id$
- *
- * @noinspection UnusedDeclaration
  */
-public abstract class AttachingMojoSupport
+abstract class AttachingMojoSupport
     extends RetrotranslateMojoSupport
 {
     /**
@@ -40,7 +36,7 @@ public abstract class AttachingMojoSupport
      * @parameter expression="${project.build.directory}"
      * @required
      */
-    protected File outputDirectory;
+    File outputDirectory
 
     /**
      * The base-name of the generated artifact.
@@ -48,21 +44,21 @@ public abstract class AttachingMojoSupport
      * @parameter expression="${project.build.finalName}"
      * @required
      */
-    protected String baseName;
+    String baseName
 
     /**
      * Flag to enable/disable attaching retrotranslated artifacts.
      *
      * @parameter expression="${attach}" default-value="true"
      */
-    protected boolean attach;
+    boolean attach
 
     /**
      * The classifier used when attaching the retrotranslated project artifact.
      *
      * @parameter expression="${classifier}" default-value="jdk14"
      */
-    protected String classifier;
+    String classifier
     
     //
     // Components
@@ -73,12 +69,12 @@ public abstract class AttachingMojoSupport
      * @required
      * @readonly
      */
-    protected MavenProject project;
+    MavenProject project
 
     /**
      * @component
      * @required
      * @readonly
      */
-    protected MavenProjectHelper projectHelper;
+    MavenProjectHelper projectHelper
 }

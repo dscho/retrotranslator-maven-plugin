@@ -4,7 +4,7 @@
  * distributed with this work for additional information
  * regarding copyright ownership.  The ASF licenses this file
  * to you under the Apache License, Version 2.0 (the
- * "License"); you may not use this file except in compliance
+ * "License") you may not use this file except in compliance
  * with the License.  You may obtain a copy of the License at
  *
  *  http://www.apache.org/licenses/LICENSE-2.0
@@ -17,13 +17,9 @@
  * under the License.
  */
 
-package org.codehaus.mojo.retrotranslator;
+package org.codehaus.mojo.retrotranslator
 
-import java.io.File;
-
-import net.sf.retrotranslator.transformer.Retrotranslator;
-
-import org.apache.maven.artifact.handler.ArtifactHandler;
+import net.sf.retrotranslator.transformer.Retrotranslator
 
 /**
  * Retrotranslates the artifact for the current project.
@@ -32,36 +28,39 @@ import org.apache.maven.artifact.handler.ArtifactHandler;
  * @phase package
  *
  * @version $Id$
- *
- * @noinspection UnusedDeclaration
  */
-public class TranslateProjectMojo
+class TranslateProjectMojo
     extends AttachingMojoSupport
 {
-    private File destJar;
+    File destJar
 
-    protected void doExecute() throws Exception {
+    //
+    // Mojo
+    //
+    
+    void execute() {
         // Only execute if the current project looks like its got Java bits in it
-        ArtifactHandler artifactHandler = project.getArtifact().getArtifactHandler();
-        if (!artifactHandler.getLanguage().equals("java")) {
-            log.debug("Not executing on non-Java project");
-            return;
+        def artifactHandler = project.artifact.artifactHandler
+        
+        if (!artifactHandler.language == 'java') {
+            log.debug('Not executing on non-Java project')
+            return
         }
         
-        super.doExecute();
+        super.execute()
         
         if (attach) {
-            projectHelper.attachArtifact(project, "jar", classifier, destJar);
+            projectHelper.attachArtifact(project, 'jar', classifier, destJar)
         }
     }
 
-    protected void configureRetrotranslator(final Retrotranslator retrotranslator) throws Exception {
-        assert retrotranslator != null;
+    protected void configureRetrotranslator(Retrotranslator trans) {
+        assert trans
 
-        retrotranslator.addSrcjar(project.getArtifact().getFile());
+        trans.addSrcjar(project.artifact.file)
         
-        destJar = new File(outputDirectory, baseName + "-" + classifier + ".jar");
+        destJar = new File(outputDirectory, "${baseName}-${classifier}.jar")
 
-        retrotranslator.setDestjar(destJar);
+        trans.destjar = destJar
     }
 }

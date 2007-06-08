@@ -4,7 +4,7 @@
  * distributed with this work for additional information
  * regarding copyright ownership.  The ASF licenses this file
  * to you under the Apache License, Version 2.0 (the
- * "License"); you may not use this file except in compliance
+ * "License") you may not use this file except in compliance
  * with the License.  You may obtain a copy of the License at
  *
  *  http://www.apache.org/licenses/LICENSE-2.0
@@ -17,36 +17,36 @@
  * under the License.
  */
 
-package org.codehaus.mojo.retrotranslator;
+package org.codehaus.mojo.retrotranslator
 
-import org.apache.maven.plugin.logging.Log;
+import org.apache.maven.plugin.logging.Log
 
-import net.sf.retrotranslator.transformer.Level;
-import net.sf.retrotranslator.transformer.Message;
-import net.sf.retrotranslator.transformer.MessageLogger;
+import net.sf.retrotranslator.transformer.Level
+import net.sf.retrotranslator.transformer.Message
+import net.sf.retrotranslator.transformer.MessageLogger
 
 /**
- * Logger bridge from Retrotranslator {@link MessageLogger} to Mojo {@link Log}
+ * Logger bridge from Retrotranslator {@link MessageLogger} to Mojo {@link Log}.
  * 
- * @author <a href="mailto:carlos@apache.org">Carlos Sanchez</a>
  * @version $Id$
  */
-public class RetrotranslatorLogger
+class RetrotranslatorLogger
     implements MessageLogger
 {
-    private Log log;
+    private Log log
 
-    public RetrotranslatorLogger(final Log log) {
-        this.log = log;
+    RetrotranslatorLogger(Log log) {
+        this.log = log
     }
     
-    public void log(final Message message) {
-        boolean info = message.getLevel().compareTo(Level.INFO) >= 0;
+    void log(Message message) {
+        boolean info = message.getLevel().compareTo(Level.INFO) >= 0
+        
         if (info) {
-            log.info(message.toString());
+            log.info("$message")
         }
         else {
-            log.warn(message.toString());
+            log.warn("$message")
         }
     }
 
