@@ -21,7 +21,6 @@ package org.codehaus.mojo.retrotranslator
 
 import net.sf.retrotranslator.transformer.Retrotranslator
 
-import org.codehaus.plexus.util.DirectoryScanner
 import org.codehaus.plexus.util.FileUtils
 
 import org.apache.maven.shared.model.fileset.FileSet

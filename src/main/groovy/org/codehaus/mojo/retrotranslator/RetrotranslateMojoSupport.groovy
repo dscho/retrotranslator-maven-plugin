@@ -149,7 +149,7 @@ abstract class RetrotranslateMojoSupport
     
     void execute() {
         def trans = new Retrotranslator()
-        trans.setLogger(new RetrotranslatorLogger(log))
+        trans.logger = new RetrotranslatorLogger(log)
 
         configureRetrotranslator(trans)
 
@@ -202,7 +202,7 @@ abstract class RetrotranslateMojoSupport
         
         boolean verified = trans.run()
         if (!verified && failonwarning) {
-            fail('Verification failed.')
+            fail('Verification failed')
         }
     }
 
