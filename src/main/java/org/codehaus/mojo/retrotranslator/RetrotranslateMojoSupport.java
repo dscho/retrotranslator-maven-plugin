@@ -185,7 +185,6 @@ public abstract class RetrotranslateMojoSupport
         
         if (verify) {
             if (SystemUtils.IS_JAVA_1_4) {
-                System.err.println("IS JAVA 1.4");
                 retrotranslator.setClassLoader(ClassLoader.getSystemClassLoader());
             }
             else {
