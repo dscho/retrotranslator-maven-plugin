@@ -76,9 +76,10 @@
             <id>user57</id>
             <name>Jason Dillon</name>
             <email>jason@planet57.com</email>
+            <role>Avid Crack Smoker</role>
         </developer>
     </developers>
-
+    
     <pluginRepositories>
         <pluginRepository>
             <id>apache-snapshots</id>
