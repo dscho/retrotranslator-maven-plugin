@@ -36,7 +36,12 @@
     <version>1.0-alpha-3-SNAPSHOT</version>
 
     <url>http://mojo.codehaus.org/retrotranslator-maven-plugin</url>
+    
     <inceptionYear>2005</inceptionYear>
+    
+    <prerequisites>
+        <maven>2.0.5</maven>
+    </prerequisites>
     
     <description>
         Translates Java 5 classes to be compatible with J2SE 1.4 using Retrotranslator.
