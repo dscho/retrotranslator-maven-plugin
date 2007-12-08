@@ -32,6 +32,16 @@ import net.sf.retrotranslator.transformer.Retrotranslator
 class TranslateProjectMojo
     extends AttachingMojoSupport
 {
+    /**
+     * Replace the artifact with the retrotranslated artifact.
+     *
+     * @parameter expression="${replace}"
+     */
+    boolean replace;
+
+    /**
+     * @parameter expression="${destJar}"
+     */
     File destJar
 
     //
@@ -42,7 +52,7 @@ class TranslateProjectMojo
         // Only execute if the current project looks like its got Java bits in it
         def artifactHandler = project.artifact.artifactHandler
         
-        if (!artifactHandler.language == 'java') {
+        if (!artifactHandler.language.equals('java')) {
             log.debug('Not executing on non-Java project')
             return
         }
@@ -58,8 +68,15 @@ class TranslateProjectMojo
         assert trans
 
         trans.addSrcjar(project.artifact.file)
-        
-        destJar = new File(outputDirectory, "${baseName}-${classifier}.jar")
+
+        if ( replace )
+        {
+            destJar = new File(outputDirectory, "${baseName}.jar")
+        }
+        else
+        {
+            destJar = new File(outputDirectory, "${baseName}-${classifier}.jar")
+        }
 
         trans.destjar = destJar
     }
