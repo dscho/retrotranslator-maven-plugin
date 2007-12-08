@@ -28,9 +28,9 @@
     
     <dependencies>
         <dependency>
-            <groupId>groovy</groupId>
-            <artifactId>groovy-all</artifactId>
-            <version>1.0</version>
+            <groupId>org.codehaus.mojo.groovy.runtime</groupId>
+            <artifactId>groovy-runtime-default</artifactId>
+            <version>1.0-beta-3</version>
             <scope>test</scope>
         </dependency>
 
@@ -80,7 +80,7 @@
                                         <include>**/*.class</include>
                                     </includes>
                                 </fileset>
-                            </filesets>s
+                            </filesets>
                         </configuration>
                     </execution>
                 </executions>
@@ -89,11 +89,13 @@
             <plugin>
                 <groupId>org.codehaus.mojo.groovy</groupId>
                 <artifactId>groovy-maven-plugin</artifactId>
-                <version>1.0-alpha-3</version>
-                
+                <version>1.0-beta-3</version>
                 <executions>
                     <execution>
                         <goals>
+                            <goal>generateStubs</goal>
+                            <goal>compile</goal>
+                            <goal>generateTestStubs</goal>
                             <goal>testCompile</goal>
                         </goals>
                     </execution>

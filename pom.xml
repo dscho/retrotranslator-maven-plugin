@@ -114,7 +114,7 @@
         <dependency>
             <groupId>org.codehaus.mojo.groovy</groupId>
             <artifactId>groovy-mojo-support</artifactId>
-            <version>1.0-beta-1</version>
+            <version>1.0-beta-3</version>
         </dependency>
         
         <dependency>
@@ -160,9 +160,18 @@
         <pluginManagement>
             <plugins>
                 <plugin>
+                    <groupId>org.codehaus.mojo.groovy</groupId>
+                    <artifactId>groovy-maven-plugin</artifactId>
+                    <version>1.0-beta-3</version>
+                    <configuration>
+                        <providerSelection>default</providerSelection>
+                    </configuration>
+                </plugin>
+                
+                <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-release-plugin</artifactId>
-                    <version>2.0-beta-5</version>
+                    <version>2.0-beta-6</version>
                 </plugin>
 
                 <plugin>
@@ -188,6 +197,18 @@
                         <source>1.4</source>
                     </configuration>
                 </plugin>
+                
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-plugin-plugin</artifactId>
+                    <version>2.3</version>
+                </plugin>
+                
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>2.0.2</version>
+                </plugin>
             </plugins>
         </pluginManagement>
         
@@ -195,11 +216,13 @@
             <plugin>
                 <groupId>org.codehaus.mojo.groovy</groupId>
                 <artifactId>groovy-maven-plugin</artifactId>
-                <version>1.0-beta-1</version>
                 <executions>
                     <execution>
                         <goals>
+                            <goal>generateStubs</goal>
                             <goal>compile</goal>
+                            <goal>generateTestStubs</goal>
+                            <goal>testCompile</goal>
                         </goals>
                     </execution>
                 </executions>
@@ -208,14 +231,6 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-plugin-plugin</artifactId>
-                <version>2.3</version>
-                <dependencies>
-                    <dependency>
-                        <groupId>org.codehaus.mojo.groovy</groupId>
-                        <artifactId>groovy-mojo-tools</artifactId>
-                        <version>1.0-beta-1</version>
-                    </dependency>
-                </dependencies>
             </plugin>
             
             <plugin>
@@ -234,6 +249,12 @@
                     <jdkName>1.4</jdkName>
                     <jdkLevel>1.4</jdkLevel>
                 </configuration>
+            </plugin>
+            
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>shitty-maven-plugin</artifactId>
+                <version>1.0-alpha-1</version>
             </plugin>
         </plugins>
     </build>
@@ -267,7 +288,6 @@
                     <plugin>
                         <groupId>org.codehaus.mojo</groupId>
                         <artifactId>shitty-maven-plugin</artifactId>
-                        <version>1.0-alpha-1-SNAPSHOT</version>
                         <executions>
                             <execution>
                                 <goals>
