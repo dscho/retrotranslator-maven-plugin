@@ -70,7 +70,7 @@ class TranslateWarMojo
     //
     
     void execute() {
-        if (!project.packaging == 'war') {
+        if (project.packaging != 'war') {
             log.debug('Not executing on non-WAR project')
             return
         }
