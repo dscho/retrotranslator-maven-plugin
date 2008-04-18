@@ -22,29 +22,31 @@
 
     <modelVersion>4.0.0</modelVersion>
     
-    <groupId>org.codehaus.mojo.retrotranslator.it</groupId>
+        <parent>
+        <groupId>org.codehaus.mojo.retrotranslator.it</groupId>
+        <artifactId>common</artifactId>
+        <version>testing</version>
+        <relativePath>../common.xml</relativePath>
+    </parent>
+    
     <artifactId>simple-translation</artifactId>
-    <version>testing</version>
     
     <dependencies>
         <dependency>
-            <groupId>org.codehaus.mojo.groovy.runtime</groupId>
-            <artifactId>groovy-runtime-default</artifactId>
-            <version>1.0-beta-3</version>
+            <groupId>org.codehaus.groovy.maven.runtime</groupId>
+            <artifactId>gmaven-runtime-default</artifactId>
             <scope>test</scope>
         </dependency>
-
+        
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>3.8.1</version>
             <scope>test</scope>
         </dependency>
         
         <dependency>
             <groupId>asm</groupId>
             <artifactId>asm-all</artifactId>
-            <version>3.0</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
@@ -63,8 +65,6 @@
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>retrotranslator-maven-plugin</artifactId>
-                <version>testing</version>
-                
                 <executions>
                     <execution>
                         <phase>process-classes</phase>
@@ -87,9 +87,8 @@
             </plugin>
             
             <plugin>
-                <groupId>org.codehaus.mojo.groovy</groupId>
-                <artifactId>groovy-maven-plugin</artifactId>
-                <version>1.0-beta-3</version>
+                <groupId>org.codehaus.groovy.maven</groupId>
+                <artifactId>gmaven-plugin</artifactId>
                 <executions>
                     <execution>
                         <goals>

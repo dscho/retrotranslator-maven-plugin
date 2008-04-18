@@ -19,7 +19,7 @@
 
 package org.codehaus.mojo.retrotranslator
 
-import org.codehaus.mojo.groovy.GroovyMojoSupport
+import org.codehaus.groovy.maven.mojo.GroovyMojo
 
 import net.sf.retrotranslator.transformer.Retrotranslator
 
@@ -31,7 +31,7 @@ import org.apache.commons.lang.SystemUtils
  * @version $Id$
  */
 abstract class RetrotranslateMojoSupport
-    extends GroovyMojoSupport
+    extends GroovyMojo
 {
     /**
      * Project classpath.
