@@ -113,13 +113,13 @@
         <dependency>
             <groupId>org.codehaus.groovy.maven</groupId>
             <artifactId>gmaven-mojo</artifactId>
-            <version>1.0-rc-1</version>
+            <version>1.0-rc-3-SNAPSHOT</version>
         </dependency>
 
         <dependency>
             <groupId>org.codehaus.groovy.maven</groupId>
             <artifactId>gmaven-common</artifactId>
-            <version>1.0-rc-1</version>
+            <version>1.0-rc-3-SNAPSHOT</version>
         </dependency>
         
         <dependency>
@@ -167,7 +167,7 @@
                 <plugin>
                     <groupId>org.codehaus.groovy.maven</groupId>
                     <artifactId>gmaven-plugin</artifactId>
-                    <version>1.0-rc-1</version>
+                    <version>1.0-rc-3-SNAPSHOT</version>
                 </plugin>
                 
                 <plugin>
@@ -233,7 +233,7 @@
                 <plugin>
                     <groupId>org.codehaus.mojo</groupId>
                     <artifactId>shitty-maven-plugin</artifactId>
-                    <version>1.0-alpha-2</version>
+                    <version>1.0-alpha-3-SNAPSHOT</version>
                 </plugin>
                 
                 <plugin>
@@ -390,11 +390,11 @@
     
     <profiles>
         <profile>
-            <id>super-helpful-integration-tests</id>
+            <id>integration-tests</id>
             
             <activation>
                 <property>
-                    <name>shit</name>
+                    <name>it</name>
                     <value>true</value>
                 </property>
             </activation>
@@ -410,63 +410,6 @@
                                     <goal>clean</goal>
                                     <goal>install</goal>
                                     <goal>test</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-        
-        <profile>
-            <id>idea</id>
-            
-            <build>
-                <defaultGoal>validate</defaultGoal>
-                
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-idea-plugin</artifactId>
-                        <configuration>
-                            <overwrite>true</overwrite>
-                            <downloadSources>true</downloadSources>
-                            <downloadJavadocs>true</downloadJavadocs>
-                        </configuration>
-                        <executions>
-                            <execution>
-                                <phase>validate</phase>
-                                <goals>
-                                    <goal>clean</goal>
-                                    <goal>idea</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
-                </plugins>
-            </build>
-        </profile>
-        
-        <profile>
-            <id>eclipse</id>
-
-            <build>
-                <defaultGoal>validate</defaultGoal>
-
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-eclipse-plugin</artifactId>
-                        <configuration>
-                            <downloadSources>true</downloadSources>
-                            <downloadJavadocs>true</downloadJavadocs>
-                        </configuration>
-                        <executions>
-                            <execution>
-                                <phase>validate</phase>
-                                <goals>
-                                    <goal>clean</goal>
-                                    <goal>eclipse</goal>
                                 </goals>
                             </execution>
                         </executions>
